@@ -1,10 +1,13 @@
 # polyglot_v1_qmk_firmware
 Customized QMK firmware for my Polyglot v1 steno keyboard. Modified from [Peter Park's original work on the default Polyglot firmware.](https://github.com/petercpark/qmk_firmware/tree/polyglot-v1)
 
-My computer's OS is in DVORAK permanently, so most of the key changes you see in QWERTY are not real key changes. Rather, they are just helpful for me personanlly, or anyone else using Dvorak.
+Changes from the default fimware include:
+ * Assumes computer is in Dvorak mode
+ * Key remappings, such as more convenient navigation arrows and keypad format for numbers
+ * RGB enabled for WS2812 LEDs
 
 # To do list
-- [ ] Upload brian_rgb_custom keymap.c 
+- [ ] Test to see if firmware actually works! (Not yet done!) 
 
 # Layout for brian_rgb_custom
 ## STENO layer
