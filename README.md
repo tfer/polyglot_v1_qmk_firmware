@@ -3,6 +3,9 @@ Customized QMK firmware for my Polyglot v1 steno keyboard. Modified from [Peter 
 
 My computer's OS is in DVORAK permanently, so most of the key changes you see in QWERTY are not real key changes. Rather, they are just helpful for me personanlly, or anyone else using Dvorak.
 
+# To do list
+- [ ] Upload brian_rgb_custom keymap.c 
+
 # Layout for brian_rgb_custom
 ## STENO layer
 Only small changes to the row above the vowels.
