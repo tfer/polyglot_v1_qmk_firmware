@@ -8,7 +8,7 @@ My computer's OS is in DVORAK permanently, so most of the key changes you see in
 
 # Layout for brian_rgb_custom
 ## STENO layer
-Only small changes to the row above the vowels.
+Only small changes to the navigation arrow area.
 
 <img src="/figs/steno.png" width="600" alt="Key layout for STENO layer"/>
 
