@@ -33,5 +33,5 @@ Output is largely influenced by my computer being in Dvorak.
 
 Available only from STENO layer.
 
-<img src"/figs/mini_num.png" width = "600" alt="Key layout for MINI_NUM layer"/>
+<img src="/figs/mini_num.png" width = "600" alt="Key layout for MINI_NUM layer"/>
 
