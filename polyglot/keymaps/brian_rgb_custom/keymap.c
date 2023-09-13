@@ -25,41 +25,52 @@ enum polyglot_layers {
     _QWERTY,
     _RAISE,
     _LOWER,
+    _MINI_NUM
 };
 
 #define RAISE MO(_RAISE)
 #define LOWER MO(_LOWER)
 #define QWERTY DF(_QWERTY)
 #define STENO DF(_STENO_DEFAULT)
+#define MINI_NUM MO(_MINI_NUM)
 
 
 // Colors for QWERTY layer
 const rgblight_segment_t PROGMEM my_QWERTY_layer[] = RGBLIGHT_LAYER_SEGMENTS(
-  {1, 2, HSV_CYAN} // LEDs 1 through 2
+  {0, 1, HSV_RED}, // Leftmost LED
+  {12, 1, HSV_RED} // Rightmost LED
   );
-}
 
 // Colors for Steno layer
 const rgblight_segment_t PROGMEM my_STENO_layer[] = RGBLIGHT_LAYER_SEGMENTS(
-  {1, 2, HSV_GREEN} // LEDs 1 through 2
+  {0, 1, HSV_AZURE}, // Leftmost LED
+  {12, 1, HSV_AZURE} // Rightmost LED
   );
+
 
 // Colors for Numbers layer
 const rgblight_segment_t PROGMEM my_NUMBER_layer[] = RGBLIGHT_LAYER_SEGMENTS(
-  {5, 2, HSV_RED} // LEDs 5 through 6
+  {1, 6, HSV_YELLOW} // Left half, roughly
   );
 
 // Colors for Symbols layer
 const rgblight_segment_t PROGMEM my_SYMBOL_layer[] = RGBLIGHT_LAYER_SEGMENTS(
-  {9, 2, HSV_PURPLE} // LEDs 9 through 10
+  {6, 6, HSV_YELLOW} // Right half, roughly
   );
+
+// Colors for the MINI_NUM layer
+const rgblight_segment_t PROGMEM my_MINI_NUM_layer[] = RGBLIGHT_LAYER_SEGMENTS(
+  {1, 6, HSV_GOLDENROD} // Left half, roughly
+  );
+
 
 // Now define the array of layers
 const rgblight_segment_t* const PROGMEM my_rgb_layers[] = RGBLIGHT_LAYERS_LIST(
   my_STENO_layer, // layer 0
   my_QWERTY_layer, // layer 1
   my_NUMBER_layer, // layer 2
-  my_SYMBOL_layer // layer 3
+  my_SYMBOL_layer, // layer 3
+  my_MINI_NUM_layer // layer 4
   );
 
 void keyboard_post_init_user(void) {
@@ -78,6 +89,7 @@ layer_state_t default_layer_state_set_user(layer_state_t state) {
 layer_state_t layer_state_set_user(layer_state_t state) {
     rgblight_set_layer_state(2, layer_state_cmp(state, _RAISE));
     rgblight_set_layer_state(3, layer_state_cmp(state, _LOWER));
+    rgblight_set_layer_state(4, layer_state_cmp(state, _MINI_NUM));
     return state;
 }
 
@@ -90,7 +102,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    //,-----------------------------------------------------.                    ,-----------------------------------------------------.
        KC_ESC,  STN_S1,  STN_TL,  STN_PL,  STN_HL,  STN_ST1, 					  STN_ST3, STN_FR,  STN_PR,  STN_LR,  STN_TR,  STN_DR,
    //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-       XXXXXXX, STN_S2,  STN_KL,  STN_WL,  STN_RL,  STN_ST2, 					 STN_ST4,  STN_RR,  STN_BR,  STN_GR,  STN_SR,  STN_ZR,
+      MINI_NUM, STN_S2,  STN_KL,  STN_WL,  STN_RL,  STN_ST2, 					 STN_ST4,  STN_RR,  STN_BR,  STN_GR,  STN_SR,  STN_ZR,
    //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       QWERTY,  KC_LSFT,  KC_LCTL,  KC_LALT,  KC_LCMD,  KC_SPC,    			        	XXXXXXX,  KC_LEFT, KC_UP, KC_DOWN ,KC_RIGHT,  KC_ENT,
    //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
@@ -112,19 +124,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   ),
 
-  [_RAISE] = LAYOUT(
+  [_RAISE] = LAYOUT( // From _QWERTY
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-      _______, _______, KC_HOME, KC_UP, KC_END,    KC_PGUP,                        KC_DEL,  KC_P7,    KC_P8,   KC_P9,  _______, KC_BSPC,
+      _______, XXXXXXX, KC_HOME, KC_UP, KC_END,    KC_PGUP,                      KC_DEL,   KC_P7,   KC_P8,   KC_P9, XXXXXXX, KC_BSPC,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      KC_TAB,  _______, KC_LEFT, KC_DOWN,KC_RIGHT, KC_PGDN,                      _______, KC_P4,    KC_P5,   KC_P6,  _______, _______,
+      KC_TAB,  XXXXXXX, KC_LEFT, KC_DOWN,KC_RIGHT, KC_PGDN,                      XXXXXXX, KC_P4,    KC_P5,   KC_P6,  XXXXXXX, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      XXXXXXX, RGB_HUI, RGB_SAI, RGB_VAI, RGB_MOD, _______,                      _______,  KC_P1,    KC_P2,   KC_P3,  _______, _______,
+      XXXXXXX, RGB_HUI, RGB_SAI, RGB_VAI, RGB_MOD, RGB_TOG,                      KC_SPC,    KC_P1,    KC_P2,   KC_P3,  XXXXXXX, KC_ENT,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                _______, _______, _______,                      KC_P0,   KC_PDOT, _______
+                                _______, _______, _______,                      KC_P0,   KC_PDOT, XXXXXXX
                                       //`--------------------------'  `--------------------------'
   ),
 
-  [_LOWER] = LAYOUT(
+  [_LOWER] = LAYOUT( // From _QWERTY
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
       _______, KC_EXLM,   KC_AT, KC_HASH,  KC_DLR, KC_PERC,                     KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_BSPC,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
@@ -136,5 +148,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                       //`--------------------------'  `--------------------------'
   ),
 
+  [_MINI_NUM] = LAYOUT( // From _STENO_DEFAULT
+  //,-----------------------------------------------------.                    ,-----------------------------------------------------.
+       KC_ESC, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      KC_DEL,   KC_P7,   KC_P8,   KC_P9, XXXXXXX, KC_BSPC,
+  //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
+      _______,  XXXXXXX, XXXXXXX, XXXXXXX,XXXXXXX, XXXXXXX,                      XXXXXXX, KC_P4,    KC_P5,   KC_P6,  XXXXXXX, XXXXXXX,
+  //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
+      XXXXXXX, RGB_HUI, RGB_SAI, RGB_VAI, RGB_MOD, RGB_TOG,                      KC_SPC,  KC_P1,    KC_P2,   KC_P3,  XXXXXXX, KC_ENT,
+  //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
+                                XXXXXXX, XXXXXXX, XXXXXXX,                      KC_P0,   KC_PDOT, XXXXXXX
+                                      //`--------------------------'  `--------------------------'
+  ),
 };
 
