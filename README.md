@@ -6,9 +6,7 @@ Changes from the default fimware include:
  * Assumes computer is in Dvorak mode
  * Key remappings, such as more convenient navigation arrows and keypad format for numbers
  * RGB enabled for WS2812 LEDs
-
-# To do list
-- [ ] Test to see if firmware actually works! (Not yet done!) 
+ * Outer LEDs (extreme left & right) indicate QWERTY or STENO. Activating the NUMBER and SYMBOL layers produces LED change as well
 
 # Layout for brian_rgb_custom
 
