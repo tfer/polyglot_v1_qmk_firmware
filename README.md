@@ -5,6 +5,7 @@ Changes from the default fimware include:
 
  * Assumes computer is in Dvorak mode
  * Key remappings, such as more convenient navigation arrows and keypad format for numbers
+ * New "mini_num" layer adds a keypad to STENO.
  * RGB enabled for WS2812 LEDs
  * Outer LEDs (extreme left & right) indicate QWERTY or STENO. Activating the NUMBER and SYMBOL layers produces LED change as well
 
@@ -27,3 +28,10 @@ Keypad on right side instead of numbers along the top. WASD-type navigation arro
 Output is largely influenced by my computer being in Dvorak.
 
 <img src="/figs/symbol.png" width="600" alt="Key layout for SYMBOL layer"/>
+
+## MINI_NUM layer
+
+Available only from STENO layer.
+
+<img src"/figs/mini_num.png" width = "600" alt="Key layout for MINI_NUM layer"/>
+
