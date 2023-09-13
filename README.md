@@ -11,22 +11,21 @@ Changes from the default fimware include:
 - [ ] Test to see if firmware actually works! (Not yet done!) 
 
 # Layout for brian_rgb_custom
-## STENO layer
-Only small changes to the navigation arrow area.
 
+## STENO layer
 <img src="/figs/steno.png" width="600" alt="Key layout for STENO layer"/>
 
 ## QWERTY layer
-No changes made, despite appearances. My computer is in Dvorak, so what you see printed is what my computer outputs when I type the corresponding key. If I were to switch my computer to Qwerty, it would output usual Qwerty keys.
+My computer is in Dvorak, so what you see printed is what my computer outputs when I type the corresponding key. If I were to switch my computer to Qwerty, it would output usual Qwerty keys.
 
 <img src="/figs/qwerty.png" width="600" alt="Key layout for QWERTY layer"/>
 
 ## NUMBER layer
-Significant changes.
+Keypad on right side instead of numbers along the top. WASD-type navigation arrows on left.
 
 <img src="/figs/number.png" width="600" alt="Key layout for NUMBER layer"/>
 
 ## SYMBOL layer
-Some changes. Output is largely influenced by my computer being in Dvorak.
+Output is largely influenced by my computer being in Dvorak.
 
 <img src="/figs/symbol.png" width="600" alt="Key layout for SYMBOL layer"/>
