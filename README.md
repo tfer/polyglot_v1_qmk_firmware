@@ -5,7 +5,6 @@ Changes from the default fimware include:
 
  * Assumes computer is in Dvorak mode
  * Key remappings, such as more convenient navigation arrows and keypad format for numbers
- * New "mini_num" layer adds a keypad to STENO.
  * RGB enabled for WS2812 LEDs
  * Outer LEDs (extreme left & right) indicate QWERTY or STENO. Activating the NUMBER and SYMBOL layers produces LED change as well
 
